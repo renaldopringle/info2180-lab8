@@ -2,40 +2,30 @@ window.onload = function() {
 	var button = document.getElementById("lookup");
 	var result = document.getElementById("result");
 	var term = document.getElementById("term");
-    //var res = document.;
-	/*button.addEventListener("click", function() {
-		result.innerHTML += "<div>" + term.value + "</div>";
-	});*/
+    var all = document.getElementById("all");
     
     
+    /*The function alerts the response xml, but is not outputted properly*/
+    /*see cnsole for the formatted response XML*/
     function successFunction(res) {
-        //alert(res.responseText);
         result.innerHTML = res.responseText;
+        alert(res.responseXML);
+        responsexml = res.responseXML;
+        console.log(responsexml);
     }
     
     /**
-    *   adds eventlistener to the button to display the information about a country as an alert
-    *
+    * adds eventlistener to the button to display the information about a country as an alert
     */
     button.addEventListener("click", function() {
-        /*new Ajax.Updater(
-            result,
-            "world.php",
-            {
-                parameters : {
-                    lookup: term.value
-                },
-                method: "get"
-            }
-        );*/
         new Ajax.Request("world.php", {
-          parameters : {
-              //lookup: term.value,               //CHECK THIS!!!
-              all: term.value,
+            parameters : {
+              lookup: term.value,
+              all: all.checked + "",
               format: "xml"
-          },
-          onSuccess : successFunction,
-          method : "get"
+            },
+            onSuccess : successFunction,
+            method : "post"
         });
     });
 }
