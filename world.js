@@ -5,13 +5,13 @@ window.onload = function() {
     var all = document.getElementById("all");
     
     
-    /*The function alerts the response xml, but is not outputted properly*/
-    /*see cnsole for the formatted response XML*/
+    /*The function alerts the response xml, but is not outputted on the html page properly*/
+    /*see console or alert for the formatted response XML*/
     function successFunction(res) {
-        result.innerHTML = res.responseText;
-        alert(res.responseXML);
-        responsexml = res.responseXML;
+        responsexml = res.responseText;
+        result.innerHTML = responsexml;
         console.log(responsexml);
+        alert(responsexml);
     }
     
     /**
